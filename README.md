@@ -3,7 +3,6 @@
 ![C](https://img.shields.io/badge/Language-C-blue)
 ![Library](https://img.shields.io/badge/Graphics-Raylib-ff69b4)
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
-![License](https://img.shields.io/badge/License-MIT-green)
 
 A **real-time adaptive traffic light simulator** built in **C using Raylib**.  
 This project demonstrates how traffic signals can adjust their timing dynamically based on the **number of vehicles** in each direction — similar to modern smart traffic systems.
@@ -43,10 +42,21 @@ This simulation models a **4-way intersection** with:
 ---
 
 ## 📁 Project Structure
+
 ├── main.c # Complete source code
 ├── raylib-5.5_win64_mingw-w64/
 │ └── include/raylib.h # Raylib header file
 └── README.md # Project documentation
+
+
+---
+
+## ⚙️ Installation & Setup (Windows)
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/<your-username>/Adaptive-Traffic-Light-Simulation.git
+cd Adaptive-Traffic-Light-Simulation
 
 
 ---
@@ -113,7 +123,3 @@ Graphics Library	Raylib 5.5
 Core Data Structure	Circular Queue
 Algorithm Type	Adaptive / Real-time control
 Randomness	Vehicle arrival rate
-
-
-
-
