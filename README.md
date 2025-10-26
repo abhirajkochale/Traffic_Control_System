@@ -1,104 +1,119 @@
-# 🚦 Adaptive Traffic Control System Simulation
+# 🚦 Adaptive Traffic Light Simulation (C + Raylib)
 
-A **C-based simulation** of an **Adaptive Traffic Light Control System** using the **Raylib graphics library**.  
-This project models a four-way intersection where traffic lights adaptively change based on vehicle density and timing logic — simulating a **smart traffic management system** in real-time.
+![C](https://img.shields.io/badge/Language-C-blue)
+![Library](https://img.shields.io/badge/Graphics-Raylib-ff69b4)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![License](https://img.shields.io/badge/License-MIT-green)
 
----
-
-## 📜 Table of Contents
-- [Project Overview](#-project-overview)
-- [Objectives](#-objectives)
-- [Features](#-features)
-- [System Requirements](#-system-requirements)
-- [Installation & Setup](#️-installation--setup)
-- [How to Compile and Run](#️-how-to-compile-and-run)
-- [Project Structure](#-project-structure)
-- [Code Explanation](#-code-explanation)
-- [Demonstration](#-demonstration)
-- [Screenshots](#-screenshots)
-- [Future Improvements](#-future-improvements)
-- [Contributors](#-contributors)
-- [License](#-license)
-- [Acknowledgments](#-acknowledgments)
+A **real-time adaptive traffic light simulator** built in **C using Raylib**.  
+This project demonstrates how traffic signals can adjust their timing dynamically based on the **number of vehicles** in each direction — similar to modern smart traffic systems.
 
 ---
 
-## 🚘 Project Overview
+## 🎮 Simulation Overview
 
-The **Traffic Control System Simulation** aims to mimic a **real-world adaptive traffic signal** at a four-way intersection.  
-Each direction (North, South, East, West) has its own signal, which alternates in a **circular queue sequence**. The system dynamically adjusts the **green light duration** depending on the **vehicle count** for each direction.
-
-When a light turns green:
-- Vehicles begin to move out one by one.
-- The green light duration increases if more vehicles are waiting.
-- When all vehicles have passed or time runs out, it switches to yellow, then moves to the next direction.
-
-This demonstrates the concept of **intelligent traffic management systems** that optimize flow and reduce waiting time.
-
----
-
-## 🎯 Objectives
-
-- Simulate real-world **adaptive traffic light behavior**.
-- Implement **Circular Queue** data structure in C.
-- Visualize vehicle movement and signal changes using **Raylib**.
-- Demonstrate **time-based** and **density-based** traffic control.
-- Provide an **educational and interactive** traffic flow simulation.
+This simulation models a **4-way intersection** with:
+- North, South, East, and West lanes  
+- Each direction has its own **green** and **yellow** phases  
+- The **green light duration automatically adapts** to the number of waiting vehicles  
+- Cars **arrive randomly** and **depart realistically** during the green phase  
+- Everything is visually displayed using **Raylib graphics** (animated lights & vehicles)
 
 ---
 
 ## ✨ Features
 
-✅ Real-time simulation of four-direction traffic.  
-✅ Dynamic light control based on vehicle count.  
-✅ Circular queue system to manage signal rotation.  
-✅ Vehicle generation, movement, and departure logic.  
-✅ Raylib-based 2D graphics visualization.  
-✅ Live on-screen data display:
-- Active direction  
-- Current state (GREEN / YELLOW)  
-- Vehicles remaining  
-- Duration and time left  
-✅ Adaptive green timing: more vehicles = longer green time.
+- 🟢 **Adaptive green time:** More cars = longer green duration  
+- 🚗 **Dynamic vehicle queue:** Random car generation per lane  
+- 🟡 **Yellow phase** for safe transitions  
+- 🔁 **Circular queue system** to handle all four signals  
+- 💡 **Real-time graphical interface** using Raylib  
+- 📈 **Displays active direction, time left, vehicle count, and flow info**
 
 ---
 
-## 💻 System Requirements
+## 🧠 Concepts Demonstrated
 
-| Component | Minimum Requirement |
-|------------|----------------------|
-| **OS** | Windows 10 / Linux / macOS |
-| **Compiler** | GCC / MinGW-w64 |
-| **Library** | [Raylib 5.5](https://www.raylib.com/) |
-| **RAM** | 2 GB or more |
-| **Graphics** | Basic GPU support (OpenGL 3.3+) |
+- Data Structures: **Circular Queue**  
+- Real-Time Simulation  
+- Raylib Graphics Programming  
+- Dynamic Timing Logic  
+- Modular & Structured C Programming
 
 ---
 
-## ⚙️ Installation & Setup
+## 📁 Project Structure
+├── main.c # Complete source code
+├── raylib-5.5_win64_mingw-w64/
+│ └── include/raylib.h # Raylib header file
+└── README.md # Project documentation
 
-### 1️⃣ Clone the Repository
+
+---
+
+## ⚙️ Installation & Setup (Windows)
+
+### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/Traffic_Control_System.git
-cd Traffic_Control_System
-## 2️⃣ Install Raylib
+git clone https://github.com/<your-username>/Adaptive-Traffic-Light-Simulation.git
+cd Adaptive-Traffic-Light-Simulation
 
-Download **Raylib 5.5** for your operating system from [raylib.com](https://www.raylib.com/).
+2. Install Raylib (Windows)
 
-Extract it and set the **include** and **lib** paths properly in your compiler.
+If you haven't installed Raylib yet:
 
----
+Download from: https://www.raylib.com/
 
-## 🏗️ How to Compile and Run
+Extract it (already included in this project under raylib-5.5_win64_mingw-w64)
 
-### 🪟 On Windows (MinGW)
-```bash
-gcc main.c -o traffic_sim -I"raylib-5.5_win64_mingw-w64/include" -L"raylib-5.5_win64_mingw-w64/lib" -lraylib -lopengl32 -lgdi32 -lwinmm
-.\traffic_sim
-Traffic_Control_System/
-│
-├── main.c                          # Main simulation source code
-├── raylib-5.5_win64_mingw-w64/     # Raylib library (headers & libs)
-├── README.md                       # Documentation
-├── /screenshots                    # Optional: simulation images
-└── LICENSE                         # Open source license
+3. Compile the code
+
+Using MinGW (GCC):
+
+gcc main.c -o traffic_simulation.exe -I raylib-5.5_win64_mingw-w64/include -L raylib-5.5_win64_mingw-w64/lib -lraylib -lopengl32 -lgdi32 -lwinmm
+
+4. Run the simulation
+./traffic_simulation.exe
+
+🖥️ Controls & Usage
+Action	Description
+Runs automatically	The simulation cycles through all signals dynamically
+Close window	Press ESC or click close (Raylib default)
+
+No keyboard or mouse input required — everything is automated.
+
+🔍 How It Works
+
+Each signal (North, South, East, West) is stored in a Circular Queue.
+
+Vehicles are added randomly over time.
+
+The active direction’s green duration = base + (vehicleCount × 0.5s)
+
+Cars leave one by one every 0.5 seconds during green.
+
+After green → yellow → next signal (queue rotation).
+
+The interface updates in real-time showing:
+
+Current active direction
+
+Vehicles remaining
+
+Light color (Green/Yellow)
+
+Time left for current phase
+
+Flow direction (e.g. “N → S, N → W”)
+
+🧩 Technical Details
+Component	Description
+Language	C (GCC / MinGW)
+Graphics Library	Raylib 5.5
+Core Data Structure	Circular Queue
+Algorithm Type	Adaptive / Real-time control
+Randomness	Vehicle arrival rate
+
+
+
+
